@@ -1,83 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kat's Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       background-color: #F5EBDD;
       font-family: 'Poppins', sans-serif;
       color: black;
+      opacity: 0;
+      transition: opacity 0.4s ease;
     }
+
+    body.fade-in {
+      opacity: 1;
+    }
+
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 15px 30px 0;
-      flex-wrap: wrap;
+      padding: 25px 40px 0;
     }
+
     .logo {
-      height: 70px;
+      height: 100px;
     }
+
     nav {
       display: flex;
       gap: 20px;
-      flex-wrap: wrap;
     }
+
     nav a {
       text-decoration: none;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 20px;
       color: black;
       transition: opacity 0.3s ease;
     }
-    nav a:hover { opacity: 0.7; }
+
+    nav a:hover {
+      opacity: 0.7;
+    }
 
     .main {
-      text-align: left;
-      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 30px;
+      padding: 60px 80px 60px;
+      max-width: 900px;
     }
+
     .main h1 {
-      font-size: 96px;
+      font-size: 108px;
       font-weight: bold;
       color: #5E5561;
-      line-height: 1.1;
+      margin-bottom: 10px;
+      white-space: pre-line;
     }
+
     .main p {
-      font-size: 20px;
-      max-width: 600px;
-      margin-top: 20px;
+      font-size: 24px;
+      line-height: 1.5;
+      max-width: 800px;
     }
 
     @media (max-width: 768px) {
       .logo {
-        height: 60px;
+        height: 80px;
       }
-      nav a {
-        font-size: 14px;
+
+      nav {
+        gap: 15px;
+        font-size: 16px;
       }
+
+      .main {
+        padding: 40px 30px;
+      }
+
       .main h1 {
         font-size: 64px;
-        text-align: center;
       }
+
       .main p {
-        font-size: 16px;
-        text-align: center;
-        margin: 15px auto 0;
-      }
-      .main {
-        padding: 50px 20px;
+        font-size: 18px;
       }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <a href="index.html"><img src="images/logo.png" class="logo" alt="Kat Logo"></a>
+    <a href="index.html">
+      <img src="images/logo.png" alt="Kat Logo" class="logo" />
+    </a>
     <nav>
       <a href="about.html">✿ about me</a>
       <a href="work.html">✿ my work</a>
@@ -86,11 +112,27 @@
   </header>
 
   <div class="main">
-  <h1>hi,</h1>
-  <h1 style="font-weight: bold;">i’m kat</h1>
-  <p>a frontend developer and UI/UX designer who loves soft aesthetics, clean layouts, and bringing ideas to life through thoughtful design.</p>
-</div>
+    <h1>hi,<br>i'm kat</h1>
+    <p>a frontend developer and UI/UX designer who loves soft aesthetics, clean layouts, and bringing ideas to life through thoughtful design.</p>
+  </div>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("fade-in");
+    });
 
+    document.querySelectorAll("a[href]").forEach(link => {
+      const href = link.getAttribute("href");
+      if (href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.body.classList.remove("fade-in");
+        document.body.style.opacity = 0;
+        setTimeout(() => {
+          window.location.href = href;
+        }, 400);
+      });
+    });
+  </script>
 </body>
 </html>

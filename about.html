@@ -6,24 +6,43 @@
   <title>About Me - Kat</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       background-color: #F5EBDD;
       font-family: 'Poppins', sans-serif;
       color: black;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    body.fade-in {
+      opacity: 1;
     }
 
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 30px 0;
+      padding: 25px 40px 0;
     }
 
-    .logo {
-      height: 60px;
+    .logo-text {
+      background-color: #5E5561;
+      color: white;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
     }
 
     nav {
@@ -34,91 +53,99 @@
     nav a {
       text-decoration: none;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 18px;
       color: black;
     }
 
     .top-section {
       display: flex;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      padding: 40px 20px;
+      gap: 40px;
+      padding: 60px 40px 20px;
+      align-items: flex-start;
     }
 
     .top-section img {
-      width: 180px;
-      border-radius: 20px;
-      object-fit: cover;
-      margin-bottom: 20px;
+      width: 220px;
+      height: auto;
+      border-radius: 15px;
     }
 
     .info p {
-      font-size: 16px;
-      margin-bottom: 6px;
+      font-size: 18px;
+      margin-bottom: 8px;
     }
 
-    .info span { font-weight: bold; }
+    .info span {
+      font-weight: bold;
+    }
 
     .divider-horizontal {
       height: 2px;
       background-color: black;
-      margin: 30px 60px;
+      margin: 30px 40px;
     }
 
     .bottom-section {
       display: flex;
-      flex-direction: column;
-      padding: 0 40px 30px;
+      gap: 60px;
+      padding: 0 40px 60px;
     }
 
     .likes-dislikes, .education {
-      margin-bottom: 30px;
+      flex: 1;
+    }
+
+    .vertical-line {
+      width: 2px;
+      background-color: black;
     }
 
     .likes-dislikes h3,
     .education h3 {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     .likes-dislikes p,
     .education p {
-      font-size: 15px;
-      line-height: 1.5;
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 12px;
     }
 
-    /* CONTACT */
+    /* Contact */
     .contact-section {
-      padding: 40px 20px;
-      text-align: center;
+      padding: 60px 40px 100px;
     }
 
     .contact-section h3 {
-      font-size: 24px;
+      font-size: 30px;
       font-weight: bold;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
+      text-align: center;
     }
 
     .social-icons {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 30px;
-      margin-bottom: 30px;
+      gap: 40px;
+      margin-bottom: 40px;
     }
 
     .icon-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 14px;
+      text-align: center;
     }
 
     .icon-item img {
-      width: 35px;
+      width: 40px;
+      height: 40px;
       margin-bottom: 8px;
+    }
+
+    .icon-item span {
+      font-size: 14px;
     }
 
     .vertical-contact {
@@ -128,37 +155,50 @@
       gap: 15px;
     }
 
-    .contact-item {
+    .vertical-contact .contact-item {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
     .contact-item img {
-      width: 20px;
+      width: 25px;
+      height: 25px;
     }
 
-    @media (min-width: 769px) {
-      .top-section {
-        flex-direction: row;
-        justify-content: center;
-        gap: 40px;
-        text-align: left;
-      }
+    .contact-item span {
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .top-section,
       .bottom-section {
-        flex-direction: row;
-        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
       }
-      .contact-section {
-        padding: 60px;
+
+      .top-section img {
+        width: 160px;
+      }
+
+      .info p {
+        text-align: center;
+      }
+
+      nav {
+        font-size: 16px;
+        gap: 12px;
+      }
+
+      .social-icons {
+        gap: 20px;
       }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <a href="index.html"><img src="images/logo.png" class="logo" alt="Kat Logo"></a>
+    <a href="index.html" class="logo-text">✿ about me</a>
     <nav>
       <a href="about.html">✿ about me</a>
       <a href="work.html">✿ my work</a>
@@ -182,9 +222,11 @@
   <section class="bottom-section">
     <div class="likes-dislikes">
       <h3>✿ likes & dislikes</h3>
-      <p><strong>likes:</strong> enhypen, singing, dancing, cooking, journaling, pastel minimalist colors</p>
-      <p><strong>dislikes:</strong> rude, arrogant and disrespectful people, messy fonts and cluttered designs</p>
+      <p><strong>likes:</strong> enhypen, singing, dancing, walking, cooking, journaling, pastel minimalist colors, soft ui, musics, taking pictures</p>
+      <p><strong>dislikes:</strong> rude, arrogant and disrespectful people, messy fonts, colors and cluttered designs</p>
     </div>
+
+    <div class="vertical-line"></div>
 
     <div class="education">
       <h3>✿ education</h3>
@@ -243,5 +285,23 @@
     </div>
   </section>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.classList.add("fade-in");
+    });
+
+    document.querySelectorAll("a[href]").forEach(link => {
+      const href = link.getAttribute("href");
+      if (href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.body.classList.remove("fade-in");
+        document.body.style.opacity = 0;
+        setTimeout(() => {
+          window.location.href = href;
+        }, 400);
+      });
+    });
+  </script>
 </body>
 </html>
