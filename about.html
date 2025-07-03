@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Me - Kat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: #F5EBDD;
+      font-family: 'Poppins', sans-serif;
+      color: black;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px 0;
+    }
+
+    .logo {
+      height: 60px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      color: black;
+    }
+
+    .top-section {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .top-section img {
+      width: 180px;
+      border-radius: 20px;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .info p {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .info span { font-weight: bold; }
+
+    .divider-horizontal {
+      height: 2px;
+      background-color: black;
+      margin: 30px 60px;
+    }
+
+    .bottom-section {
+      display: flex;
+      flex-direction: column;
+      padding: 0 40px 30px;
+    }
+
+    .likes-dislikes, .education {
+      margin-bottom: 30px;
+    }
+
+    .likes-dislikes h3,
+    .education h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .likes-dislikes p,
+    .education p {
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .contact-section h3 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    .icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .icon-item img {
+      width: 35px;
+      margin-bottom: 8px;
+    }
+
+    .vertical-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .contact-item img {
+      width: 20px;
+    }
+
+    @media (min-width: 769px) {
+      .top-section {
+        flex-direction: row;
+        justify-content: center;
+        gap: 40px;
+        text-align: left;
+      }
+      .bottom-section {
+        flex-direction: row;
+        justify-content: space-around;
+      }
+      .contact-section {
+        padding: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html"><img src="images/logo.png" class="logo" alt="Kat Logo"></a>
+    <nav>
+      <a href="about.html">✿ about me</a>
+      <a href="work.html">✿ my work</a>
+      <a href="#contact">✿ contact</a>
+    </nav>
+  </header>
+
+  <section class="top-section">
+    <img src="profile/profile.jpeg" alt="Profile Picture">
+    <div class="info">
+      <p><span>name:</span> katrina casandra a. salazar</p>
+      <p><span>pronouns:</span> she/her</p>
+      <p><span>birthday:</span> august 9, 2004</p>
+      <p><span>location:</span> fairview, quezon city</p>
+      <p><span>languages:</span> tagalog, english, little bit of korean</p>
+    </div>
+  </section>
+
+  <div class="divider-horizontal"></div>
+
+  <section class="bottom-section">
+    <div class="likes-dislikes">
+      <h3>✿ likes & dislikes</h3>
+      <p><strong>likes:</strong> enhypen, singing, dancing, cooking, journaling, pastel minimalist colors</p>
+      <p><strong>dislikes:</strong> rude, arrogant and disrespectful people, messy fonts and cluttered designs</p>
+    </div>
+
+    <div class="education">
+      <h3>✿ education</h3>
+      <p><strong>elementary:</strong> west fairview elementary school (2012 - 2016)</p>
+      <p><strong>junior high school:</strong> west fairview high school (2017 - 2020)</p>
+      <p><strong>senior high school:</strong> lagro high school (2020 - 2023)</p>
+      <p><strong>college:</strong> quezon city university (2023 - present)</p>
+    </div>
+  </section>
+
+  <div class="divider-horizontal"></div>
+
+  <section class="contact-section" id="contact">
+    <h3>✿ contact</h3>
+
+    <div class="social-icons">
+      <div class="icon-item">
+        <a href="https://www.facebook.com/kat.salazar.535801?mibextid=wwXIfr" target="_blank">
+          <img src="icons/facebook.png" alt="Facebook">
+        </a>
+        <span>Kat Salazar</span>
+      </div>
+      <div class="icon-item">
+        <a href="https://www.instagram.com/keiamper" target="_blank">
+          <img src="icons/instagram.png" alt="Instagram">
+        </a>
+        <span>@keiamper</span>
+      </div>
+      <div class="icon-item">
+        <a href="https://github.com/rinaseung" target="_blank">
+          <img src="icons/github.png" alt="GitHub">
+        </a>
+        <span>@rinaseung</span>
+      </div>
+      <div class="icon-item">
+        <a href="tel:09935265517">
+          <img src="icons/phone.png" alt="Phone">
+        </a>
+        <span>09935265517</span>
+      </div>
+    </div>
+
+    <div class="vertical-contact">
+      <div class="contact-item">
+        <a href="mailto:salazar.katrinacasandra.amper@gmail.com">
+          <img src="icons/gmail.png" alt="Gmail">
+        </a>
+        <span>salazar.katrinacasandra.amper@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <a href="https://www.google.com/maps/place/Fairview,+Quezon+City/" target="_blank">
+          <img src="icons/location.png" alt="Location">
+        </a>
+        <span>fairview, quezon city</span>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
