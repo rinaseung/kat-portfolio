@@ -1,138 +1,112 @@
 <!DOCTYPE html>
-<html lang="="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kat's Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    /* Global */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      background-color: #F5EBDD;
       font-family: 'Poppins', sans-serif;
-      color: black;
+      color: #000;
+      background: var(--bg);
       opacity: 0;
-      transition: opacity 0.4s ease;
+      transition: opacity .4s ease, background .3s ease, color .3s ease;
     }
-
-    body.fade-in {
-      opacity: 1;
+    body.fade-in { opacity: 1; }
+    :root {
+      --bg: #F5EBDD;
+      --text: #000;
     }
+    [data-theme="dark"] {
+      --bg: #333;
+      --text: #EEE;
+    }
+    body { background: var(--bg); color: var(--text); }
 
     header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 25px 40px 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 30px;
     }
-
-    .logo {
-      height: 100px;
-    }
-
-    nav {
-      display: flex;
-      gap: 20px;
-    }
-
+    .logo { height: 80px; }
+    nav { display: flex; gap: 20px; flex-wrap: wrap; }
     nav a {
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 20px;
-      color: black;
-      transition: opacity 0.3s ease;
+      color: var(--text);
+      font-weight: bold; font-size: 16px; text-decoration: none;
+      transition: opacity .3s;
     }
-
-    nav a:hover {
-      opacity: 0.7;
+    nav a:hover { opacity: .7; }
+    .toggle {
+      width: 40px; height: 40px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
     }
 
     .main {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-top: 30px;
-      padding: 60px 80px 60px;
-      max-width: 900px;
+      padding: 60px 40px; max-width: 900px; margin: auto;
+      text-align: left;
     }
-
     .main h1 {
-      font-size: 108px;
-      font-weight: bold;
-      color: #5E5561;
-      margin-bottom: 10px;
-      white-space: pre-line;
+      font-size: 96px; font-weight: bold;
+      color: #5E5561; line-height: 1.1;
     }
-
     .main p {
-      font-size: 24px;
-      line-height: 1.5;
-      max-width: 800px;
+      font-size: 20px; margin-top: 20px;
     }
 
-    @media (max-width: 768px) {
-      .logo {
-        height: 80px;
-      }
-
-      nav {
-        gap: 15px;
-        font-size: 16px;
-      }
-
-      .main {
-        padding: 40px 30px;
-      }
-
-      .main h1 {
-        font-size: 64px;
-      }
-
-      .main p {
-        font-size: 18px;
-      }
+    /* Responsiveness */
+    @media (max-width:768px) {
+      .logo { height: 60px; }
+      nav a { font-size: 14px; }
+      .main { padding: 40px 20px; text-align: center; }
+      .main h1 { font-size: 64px; }
+      .main p { font-size: 16px; }
     }
   </style>
 </head>
 <body>
   <header>
-    <a href="index.html">
-      <img src="images/logo.png" alt="Kat Logo" class="logo" />
-    </a>
-    <nav>
-      <a href="about.html">✿ about me</a>
-      <a href="work.html">✿ my work</a>
-      <a href="about.html#contact">✿ contact</a>
-    </nav>
+    <a href="index.html"><img src="images/logo.png" class="logo" alt="Kat Logo"></a>
+    <div style="display:flex;align-items:center;gap:20px;">
+      <nav>
+        <a href="about.html">✿ about me</a>
+        <a href="work.html">✿ my work</a>
+        <a href="about.html#contact">✿ contact</a>
+      </nav>
+      <div class="toggle" id="theme-toggle">🌙</div>
+    </div>
   </header>
 
   <div class="main">
-    <h1>hi,<br>i'm kat</h1>
+    <h1>hi,<br><strong>i’m kat</strong></h1>
     <p>a frontend developer and UI/UX designer who loves soft aesthetics, clean layouts, and bringing ideas to life through thoughtful design.</p>
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.body.classList.add("fade-in");
+    // Fade Transition
+    document.addEventListener("DOMContentLoaded", () => document.body.classList.add("fade-in"));
+    document.querySelectorAll("a[href]").forEach(a => {
+      if(!a.getAttribute("href").match(/^(#|mailto:|tel:)/)) {
+        a.onclick = e => {
+          e.preventDefault();
+          document.body.classList.remove("fade-in");
+          setTimeout(() => window.location = a.href, 400);
+        }
+      }
     });
 
-    document.querySelectorAll("a[href]").forEach(link => {
-      const href = link.getAttribute("href");
-      if (href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.body.classList.remove("fade-in");
-        document.body.style.opacity = 0;
-        setTimeout(() => {
-          window.location.href = href;
-        }, 400);
-      });
-    });
+    // Theme Toggle
+    const toggle = document.getElementById("theme-toggle");
+    const root = document.documentElement;
+    const saved = localStorage.getItem("theme");
+    if (saved) root.setAttribute("data-theme", saved), toggle.textContent = saved === "dark" ? "☀️" : "🌙";
+    toggle.onclick = () => {
+      const current = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", current);
+      localStorage.setItem("theme", current);
+      toggle.textContent = current === "dark" ? "☀️" : "🌙";
+    };
   </script>
 </body>
 </html>

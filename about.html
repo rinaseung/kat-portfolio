@@ -2,212 +2,113 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>About Me - Kat</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      background-color: #F5EBDD;
-      font-family: 'Poppins', sans-serif;
-      color: black;
-      opacity: 0;
-      transition: opacity 0.4s ease;
+      font-family:'Poppins',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      opacity:0;
+      transition:opacity .4s, background .3s, color .3s;
     }
-
-    body.fade-in {
-      opacity: 1;
-    }
+    body.fade-in { opacity:1; }
+    :root { --bg:#F5EBDD; --text:#000; }
+    [data-theme="dark"] { --bg:#333; --text:#EEE; }
 
     header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 25px 40px 0;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:20px 30px;
     }
-
-    .logo-text {
-      background-color: #5E5561;
-      color: white;
-      padding: 10px 24px;
-      border-radius: 30px;
-      font-size: 20px;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    nav {
-      display: flex;
-      gap: 20px;
-    }
-
+    .logo { height:60px; }
+    nav { display:flex; gap:20px; flex-wrap:wrap; }
     nav a {
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 18px;
-      color: black;
+      color:var(--text);
+      font-weight:bold; font-size:14px; text-decoration:none;
     }
+    .toggle { width:35px; height:35px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
 
     .top-section {
-      display: flex;
-      gap: 40px;
-      padding: 60px 40px 20px;
-      align-items: flex-start;
+      display:flex; align-items:flex-start; gap:40px;
+      padding:40px 30px; text-align:left;
     }
-
     .top-section img {
-      width: 220px;
-      height: auto;
-      border-radius: 15px;
+      width:180px;
+      border-radius:15px;
     }
-
     .info p {
-      font-size: 18px;
-      margin-bottom: 8px;
+      font-size:16px; margin-bottom:8px;
     }
-
-    .info span {
-      font-weight: bold;
-    }
+    .info span { font-weight:bold; }
 
     .divider-horizontal {
-      height: 2px;
-      background-color: black;
-      margin: 30px 40px;
+      height:2px; background:var(--text);
+      margin:30px 30px;
     }
-
     .bottom-section {
-      display: flex;
-      gap: 60px;
-      padding: 0 40px 60px;
+      display:flex; gap:60px; padding:0 30px 40px;
+      flex-direction:column;
     }
-
     .likes-dislikes, .education {
-      flex: 1;
+      margin-bottom:30px;
+    }
+    .likes-dislikes h3, .education h3 {
+      font-size:18px; font-weight:bold; margin-bottom:10px;
+    }
+    .likes-dislikes p, .education p {
+      font-size:15px; line-height:1.5;
     }
 
-    .vertical-line {
-      width: 2px;
-      background-color: black;
-    }
-
-    .likes-dislikes h3,
-    .education h3 {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    .likes-dislikes p,
-    .education p {
-      font-size: 16px;
-      line-height: 1.6;
-      margin-bottom: 12px;
-    }
-
-    /* Contact */
     .contact-section {
-      padding: 60px 40px 100px;
+      padding:40px 30px 80px; text-align:center;
     }
-
     .contact-section h3 {
-      font-size: 30px;
-      font-weight: bold;
-      margin-bottom: 30px;
-      text-align: center;
+      font-size:24px; font-weight:bold; margin-bottom:25px;
     }
-
     .social-icons {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 40px;
-      margin-bottom: 40px;
+      display:flex; justify-content:center;
+      gap:30px; margin-bottom:30px;
     }
-
-    .icon-item {
-      text-align: center;
-    }
-
     .icon-item img {
-      width: 40px;
-      height: 40px;
-      margin-bottom: 8px;
+      width:35px; margin-bottom:8px;
     }
-
     .icon-item span {
-      font-size: 14px;
+      font-size:14px;
+      display:block;
     }
-
     .vertical-contact {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
+      display:flex; flex-direction:column;
+      align-items:center; gap:15px;
     }
-
-    .vertical-contact .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
     .contact-item img {
-      width: 25px;
-      height: 25px;
+      width:20px;
+      margin-right:8px;
     }
 
-    .contact-item span {
-      font-size: 14px;
-    }
-
-    @media (max-width: 768px) {
-      .top-section,
-      .bottom-section {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .top-section img {
-        width: 160px;
-      }
-
-      .info p {
-        text-align: center;
-      }
-
-      nav {
-        font-size: 16px;
-        gap: 12px;
-      }
-
-      .social-icons {
-        gap: 20px;
-      }
+    @media(min-width:769px){
+      .bottom-section { flex-direction:row; justify-content:space-around; }
+      .top-section { justify-content:center; }
     }
   </style>
 </head>
 <body>
   <header>
-    <a href="index.html" class="logo-text">✿ about me</a>
-    <nav>
-      <a href="about.html">✿ about me</a>
-      <a href="work.html">✿ my work</a>
-      <a href="#contact">✿ contact</a>
-    </nav>
+    <a href="index.html"><img src="images/logo.png" class="logo" alt="Kat Logo"></a>
+    <div style="display:flex;align-items:center;gap:20px;">
+      <nav>
+        <a href="about.html">✿ about me</a>
+        <a href="work.html">✿ my work</a>
+        <a href="#contact">✿ contact</a>
+      </nav>
+      <div class="toggle" id="theme-toggle">🌙</div>
+    </div>
   </header>
 
   <section class="top-section">
-    <img src="profile/profile.jpeg" alt="Profile Picture">
+    <img src="profile/profile.jpeg" alt="Profile Picture" />
     <div class="info">
       <p><span>name:</span> katrina casandra a. salazar</p>
       <p><span>pronouns:</span> she/her</p>
@@ -222,18 +123,15 @@
   <section class="bottom-section">
     <div class="likes-dislikes">
       <h3>✿ likes & dislikes</h3>
-      <p><strong>likes:</strong> enhypen, singing, dancing, walking, cooking, journaling, pastel minimalist colors, soft ui, musics, taking pictures</p>
-      <p><strong>dislikes:</strong> rude, arrogant and disrespectful people, messy fonts, colors and cluttered designs</p>
+      <p><strong>likes:</strong> enhypen, singing, dancing, walking, cooking, journaling, pastel minimalist colors, soft UI</p>
+      <p><strong>dislikes:</strong> rude, arrogant/disrespectful people, messy fonts, cluttered designs</p>
     </div>
-
-    <div class="vertical-line"></div>
-
     <div class="education">
       <h3>✿ education</h3>
-      <p><strong>elementary:</strong> west fairview elementary school (2012 - 2016)</p>
-      <p><strong>junior high school:</strong> west fairview high school (2017 - 2020)</p>
-      <p><strong>senior high school:</strong> lagro high school (2020 - 2023)</p>
-      <p><strong>college:</strong> quezon city university (2023 - present)</p>
+      <p><strong>elementary:</strong> west fairview elementary school (2012–2016)</p>
+      <p><strong>junior high school:</strong> west fairview high school (2017–2020)</p>
+      <p><strong>senior high school:</strong> lagro high school (2020–2023)</p>
+      <p><strong>college:</strong> quezon city university (2023–present)</p>
     </div>
   </section>
 
@@ -241,46 +139,26 @@
 
   <section class="contact-section" id="contact">
     <h3>✿ contact</h3>
-
     <div class="social-icons">
       <div class="icon-item">
-        <a href="https://www.facebook.com/kat.salazar.535801?mibextid=wwXIfr" target="_blank">
-          <img src="icons/facebook.png" alt="Facebook">
-        </a>
-        <span>Kat Salazar</span>
+        <a href="https://facebook.com/..."><img src="icons/facebook.png" alt="Facebook"></a><span>Kat Salazar</span>
       </div>
       <div class="icon-item">
-        <a href="https://www.instagram.com/keiamper" target="_blank">
-          <img src="icons/instagram.png" alt="Instagram">
-        </a>
-        <span>@keiamper</span>
+        <a href="https://instagram.com/keiamper"><img src="icons/instagram.png" alt="Instagram"></a><span>@keiamper</span>
       </div>
       <div class="icon-item">
-        <a href="https://github.com/rinaseung" target="_blank">
-          <img src="icons/github.png" alt="GitHub">
-        </a>
-        <span>@rinaseung</span>
+        <a href="https://github.com/rinaseung"><img src="icons/github.png" alt="GitHub"></a><span>@rinaseung</span>
       </div>
       <div class="icon-item">
-        <a href="tel:09935265517">
-          <img src="icons/phone.png" alt="Phone">
-        </a>
-        <span>09935265517</span>
+        <a href="tel:09935265517"><img src="icons/phone.png" alt="Phone"></a><span>09935265517</span>
       </div>
     </div>
-
     <div class="vertical-contact">
       <div class="contact-item">
-        <a href="mailto:salazar.katrinacasandra.amper@gmail.com">
-          <img src="icons/gmail.png" alt="Gmail">
-        </a>
-        <span>salazar.katrinacasandra.amper@gmail.com</span>
+        <a href="mailto:..."><img src="icons/gmail.png" alt="Gmail"></a><span>salazar.katrinacasandra.amper@gmail.com</span>
       </div>
       <div class="contact-item">
-        <a href="https://www.google.com/maps/place/Fairview,+Quezon+City/" target="_blank">
-          <img src="icons/location.png" alt="Location">
-        </a>
-        <span>fairview, quezon city</span>
+        <a href="https://maps.google.com/..."><img src="icons/location.png" alt="Location"></a><span>fairview, quezon city</span>
       </div>
     </div>
   </section>
@@ -288,20 +166,28 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       document.body.classList.add("fade-in");
+      document.body.setAttribute("data-theme", localStorage.getItem("theme") || "light");
+      document.getElementById("theme-toggle").textContent =
+        document.body.getAttribute("data-theme")==="dark" ? "☀️" : "🌙";
     });
 
-    document.querySelectorAll("a[href]").forEach(link => {
-      const href = link.getAttribute("href");
-      if (href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) return;
-      link.addEventListener("click", function (e) {
-        e.preventDefault();
-        document.body.classList.remove("fade-in");
-        document.body.style.opacity = 0;
-        setTimeout(() => {
-          window.location.href = href;
-        }, 400);
-      });
+    document.querySelectorAll("a[href]").forEach(a => {
+      const href = a.getAttribute("href");
+      if(!href.match(/^(#|mailto:|tel:)/)) {
+        a.onclick = e => {
+          e.preventDefault();
+          document.body.classList.remove("fade-in");
+          setTimeout(() => window.location = href, 400);
+        };
+      }
     });
+
+    document.getElementById("theme-toggle").onclick = () => {
+      const current = document.body.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      document.body.setAttribute("data-theme", current);
+      localStorage.setItem("theme", current);
+      document.getElementById("theme-toggle").textContent = current === "dark" ? "☀️" : "🌙";
+    };
   </script>
 </body>
 </html>
